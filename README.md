@@ -34,16 +34,16 @@ update-database
 
 ## Endpoints
 
-Account
+### Account
 
 `POST /api/account/register` - Create a new account <br />
 `POST /api/account/login` - Login into your account <br />
 
-Genre
+### [Genre][]
 
 `GET /genres` - Get list of genres <br />
 
-Movie
+### [Movie][]
 
 `GET /movies` - Get list of movies <br />
 `GET /movies/{movieId}` - Get details of specified movie <br />
@@ -51,7 +51,7 @@ Movie
 `DELETE /movies/{movieId}` - Delete a specified movie <br />
 `POST /movies/Add` - Add a new movie <br />
 
-MovieRating
+### [MovieRating][]
 
 `GET/api/movies/{movieId}/rating` - Get list of movie ratings for movie <br />
 `GET /MovieRating/{movieId}/{movieRatingId}` - Get details of specified movie rating <br />
