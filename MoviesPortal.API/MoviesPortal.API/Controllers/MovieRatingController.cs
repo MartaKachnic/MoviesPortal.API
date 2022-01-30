@@ -46,26 +46,13 @@ namespace MoviesPortal.API.Controllers
             }
             return Ok(mapper.Map<MovieRating>(movieRating));
         }
- // [ValidateAntiForgeryToken]
+
         [HttpPost]
         [Route("movies/{movieId:guid}/comment")]
         public async Task<IActionResult> AddMovieRatingAsync([FromBody] AddMovieRatingRequest request, [FromRoute] Guid movieId)
         {
-           // if (ModelState.IsValid)
-           // {
-               // if (HttpContext.User.Identity.Name != null)
-               // {
-                   // ClaimsPrincipal User = this.User;
-                   // request.UserId = Guid.Parse(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-                    //request.UserId = Guid.Parse(HttpContext.User.Identity.Name);
             request.PublishDate = DateTime.Now;
-            //  }
-            //  else 
-            //  { 
-            //jak się nie jest zalogowanym to nie można dodać komentarza
-            //  }
-            // }
+            
             var movieRating = await movieRatingRepository.AddMovieRating(mapper.Map<DataModels.MovieRating>(request), movieId);
             return CreatedAtAction(nameof(GetMovieRatingAsync), new { movieId = movieRating.MovieId, movieRatingId = movieRating.Id },
                 mapper.Map<MovieRating>(movieRating));

@@ -33,16 +33,16 @@ namespace MoviesPortal.API.Repositories
 
         public async Task<MovieRating> AddMovieRating(MovieRating request, Guid movieId)
         {
-
+            var movie = await GetMovieAsyncById(movieId);
+           
             request.MovieId = movieId;
             request.UserId = userContextService.GetUserId;
             var movieRating = await context.MovieRating.AddAsync(request);
-            /*
-            if (movieRating != null)
-            {
-                 request.MovieId = movieId; //przypisanie filmu do oceny
-            }
-            */
+            await context.SaveChangesAsync();
+            var average =  context.MovieRating.Where(x => x.MovieId == movieId).Average(r => r.Rating);
+            
+            movie.AverageRating = Convert.ToDecimal(Math.Round(average, 2));
+            
             await context.SaveChangesAsync();
             return movieRating.Entity;
         }
@@ -89,8 +89,6 @@ namespace MoviesPortal.API.Repositories
         }
         public async Task<List<MovieRating>> GetMovieRatingsAsync(Guid movieId)
         {
-           // var movie = await GetMovieAsyncById(movieId);
-            //var movieRatings = movie.MovieRatings;
             var movieRatings = await context.MovieRating.Include(nameof(User)).Where(x => x.MovieId == movieId).ToListAsync();
 
             return movieRatings;

@@ -42,6 +42,7 @@ namespace MoviesPortal.API.Repositories
                 existingMovie.Director = request.Director;
                 existingMovie.ReleaseDate = request.ReleaseDate;
                 existingMovie.Description = request.Description;
+                existingMovie.Poster = request.Poster;
                 existingMovie.GenreId = request.GenreId;
 
              

@@ -78,19 +78,6 @@ namespace MoviesPortal.API.Controllers
             return CreatedAtAction(nameof(GetMovieAsync), new { movieId = movie.Id },
                 mapper.Map<Movie>(movie));
         }
-        /*
-        [HttpPost]
-        [Route("[controller]/{movieId:guid}/upload-image")]
-        public async Task<IActionResult> UploadImage([FromRoute] Guid movieId, IFormFile poster)
-        {
-            //check if movie exist
-
-
-            //upload image to local storage
-
-            //update the  image path in the database
-        }
-        */
-
+      
     }
 }

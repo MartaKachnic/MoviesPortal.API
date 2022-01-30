@@ -15,8 +15,6 @@ namespace MoviesPortal.API.Repositories
         Task<MovieRating> GetMovieRatingAsync(Guid movieId, Guid movieRatingId);
 
         Task<bool> Exists(Guid movieRatingId);
-       // Task<Movie> UpdateMovieRating(Guid studentId, MovieRating request);
-       // Task<Movie> DeleteMovieRating(Guid studentId);
         Task<MovieRating> AddMovieRating(MovieRating request, Guid movieId);
     }
 }

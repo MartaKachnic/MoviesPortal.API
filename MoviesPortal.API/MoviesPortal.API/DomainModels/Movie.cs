@@ -17,17 +17,7 @@ namespace MoviesPortal.API.DomainModels
         public Guid GenreId { get; set; }
         public Genre Genre { get; set; }
         public List<MovieRating> MovieRatings { get; set; }
-        public decimal AverageRatingForDisplay
-        {
-            get
-            {
-                if (AverageRating == 0)
-                {
-                    return 0m;
-                }
-                return Math.Round(AverageRating * 2, MidpointRounding.AwayFromZero) / 2;
-            }
-        }
+       
     }
 
 }
